@@ -1,0 +1,20 @@
+{
+    "name": "vlad/assets",
+    "authors": [
+        {
+            "name": "bjlag",
+            "email": "vlad.duplin@ya.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Engine\\": "engine"
+        }
+    },
+    "require": {
+        "twig/twig": "^2.5"
+    },
+    "require-dev": {
+        "kint-php/kint": "^3.0"
+    }
+}

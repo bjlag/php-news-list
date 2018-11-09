@@ -1,0 +1,57 @@
+{{ extensions.sortbar | raw }}
+
+{% if data %}
+
+    <div class="row">
+
+    {% for item in data %}
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+
+                {% if item.picture %}
+                    <a href="/news/{{ item.id }}">
+                        <img class="card-img-top" src="{{ item.picture }}" alt="{{ item.title }}">
+                    </a>
+                {% endif %}
+
+                <div class="card-body">
+                    <p class="mb-2">
+                        <a class="text-muted" href="/author/{{ item.author_id }}">
+                            <small>{{ item.author_name }}</small>
+                        </a>
+                    </p>
+                    <h5><a href="/news/{{ item.id }}">{{ item.title }}</a></h5>
+                    <p class="card-text">
+
+                        {% set previewText = item.text | striptags | trim %}
+                        {{ previewText | length > options.previewTextLength
+                            ? previewText | slice( 0, options.previewTextLength ) ~ '...'
+                            : previewText }}
+
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/news/{{ item.id }}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                        </div>
+                        <small class="text-muted">{{ item.publish_date | date( options.dateFormat ) }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    </div>
+
+    {{ extensions.pagination | raw }}
+
+{% else %}
+
+    <div class="row">
+        <div class="col">
+            <p>Новостей нет <i class="fas fa-frown"></i></p>
+        </div>
+    </div>
+
+{% endif %}

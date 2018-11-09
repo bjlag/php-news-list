@@ -1,0 +1,19 @@
+<h1 class="mb-4">{{ header }}</h1>
+
+{% if ( data ) %}
+
+<p>
+    Дата {{ data.publish_date | date( options.dateFormat ) }}
+</p>
+<p>
+    Автор <a href="/author/{{ data.author_id }}">{{ data.author_name }}</a>
+</p>
+<p>
+    {{ data.text | raw }}
+</p>
+
+{% endif %}
+
+<p>
+    <a href="/">Все новости</a>
+</p>

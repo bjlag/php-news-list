@@ -1,0 +1,4 @@
+/.idea
+/docker/var
+/src/vendor
+/src/public_html/cache

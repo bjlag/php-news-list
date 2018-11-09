@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+        <div class="pagination-group">
+            <nav class="pagination-group__nav">
+                <ul class="pagination m-0">
+
+                    {% if data.items %}
+                        {% for item in data.items %}
+
+                            <li class="page-item {{ item.disable == true ? 'disabled' : '' }}">
+                                <a class="page-link" href="{{ item.url }}">{{ item.title }}</a>
+                            </li>
+
+                        {% endfor %}
+                    {% endif %}
+
+                </ul>
+            </nav>
+            <div class="pagination-group__info">
+                {{ data.currentPage }} из {{ data.totalPage }}
+            </div>
+        </div>
+    </div>
+</div>
